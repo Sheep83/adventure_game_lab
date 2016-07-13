@@ -65,5 +65,15 @@ describe('hero', function(){
     hero1.attack(baddie1)
     assert.equal( 80, baddie1.health)
   })
+  it("baddie can rage", function(){
+    var hero1 = new Hero ("Conan", 100, "chicken", 20)
+    var baddie1 = new Baddie ("General Sheng", 100, 10, 100)
+    console.log(baddie1.name)
+
+    baddie1.rageAttack(hero1)
+    console.log(hero1.health)
+    assert.equal( 60, hero1.health)
+    assert.equal( 60, baddie1.rage)
+  })
 
 })
