@@ -1,6 +1,7 @@
 var Hero = require ('../hero');
 var Food = require ( '../food');
 var Rat = require ( '../rat');
+var Baddie = require ( '../baddie');
 
 var assert = require('chai').assert;
 
@@ -43,13 +44,26 @@ describe('hero', function(){
     var food1 = new Food ("chicken", 50)
     var hero1 = new Hero ("Conan", 100, "chicken")
     rat1.touch(food1)
-    console.log(food1.poisoned)
     hero1.eat(food1)
     assert.equal( 50, hero1.health)
   })
-
-
-
-
+  it("baddie attacks hero", function(){
+    var hero1 = new Hero ("Conan", 100, "chicken")
+    var baddie1 = new Baddie ("General Sheng", 100, 10)
+    baddie1.attack(hero1)
+    assert.equal( 90, hero1.health)
+  })
+  it("hero farts on baddie", function(){
+    var hero1 = new Hero ("Conan", 100, "chicken")
+    var baddie1 = new Baddie ("General Sheng", 100, 10)
+    hero1.fart(baddie1)
+    assert.equal( 0, baddie1.health)
+  })
+  it("hero attacks baddie", function(){
+    var hero1 = new Hero ("Conan", 100, "chicken", 20)
+    var baddie1 = new Baddie ("General Sheng", 100, 10)
+    hero1.attack(baddie1)
+    assert.equal( 80, baddie1.health)
+  })
 
 })

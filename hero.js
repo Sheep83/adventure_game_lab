@@ -1,7 +1,8 @@
-var Hero = function(name, health, favFood){
+var Hero = function(name, health, favFood, attackVal){
   this.name = name;
   this.health = health;
   this.favFood = favFood;
+  this.attackVal = attackVal;
 }
 
 Hero.prototype = {
@@ -22,7 +23,14 @@ Hero.prototype = {
     if (this.health < 0){
       this.health=0;
     }
+  },
+  fart: function(target){
+    target.health = 0
+  },
+  attack: function(target){
+    target.health -= this.attackVal
   }
+
 }
 
 module.exports = Hero;
